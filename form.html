@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>05211940000005 Fadilla Rahmayanti</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .label {float: left; width: 150px; }  
+        .infobox {width: 200px; }  
+        .error { color: red; padding-left: 10px; } 
+        .submit { margin-left: 150px; margin-top: 10px; background-color: blue; color:white;}  
+    </style>
+</head>
+<body>
+    <script>
+        $(document).ready(function() { //specifies what happens when a ready event occurs.
+            $('.error').hide(); //method hides the selected elements
+            $('.submit').click(function(event) { //triggers the submit event, or attaches a function to run when a submit event occurs
+                var data=$('.infobox').val(); //read the contents of the text box in the css class with the name infobox
+                if(validate_phoneno(data)) //determine whether the data condition is true or false
+                {
+                    $('.error').hide(); //method hides the selected elements
+                }
+                else 
+                {
+                $('.error').show(); //method writes an error message to the console       
+                event.preventDefault(); //stops the default action of an element from happening.
+                }    
+               });  
+             });
+             function validate_phoneno(ph) //function to validate entered data
+             {   
+                 var pattern=new RegExp(/^[0-9-+]+$/); //expression to find any character between the brackets that is a digit. 
+                 return pattern.test(ph); //test a string match against a requirement
+             } 
+    </script>
+    <form id="signup" method="post" action="">  
+        <div>
+            <span class="label">Nomor Telepon Rumah </span>
+            <input type="text"  class="infobox" name="phone" />
+            <span class="error"> Nomor telepon tidak valid</span>
+        </div>    
+            <input class="submit" type="submit" value="Submit"> 
+    </form>   
+</body>
+</html>
